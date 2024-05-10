@@ -1,0 +1,21 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: auto 30px;
+    color: #555;
+}
+
+ul {
+    margin: 0;
+}
+
+li {
+    padding: 5px;
+}
+
+#cypher-container {
+    margin-top: 20px;
+}
+
+#cypher-list {
+    list-style-type: none;
+}
