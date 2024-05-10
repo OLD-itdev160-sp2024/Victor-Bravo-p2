@@ -21,7 +21,7 @@ function addEncryptedElement (encrypt){
     encryptEl.appendChild(textEl);
 
     //Add encrypted element to list
-    listEl.appendChild(encryptedEl);
+    listEl.appendChild(encryptEl);
 }
 
 //Click handler to add a new encrypted
@@ -34,7 +34,7 @@ function addEncrypted (event){
         var id = 'item-' + encrypted.length;
 
         //Pass parameters to the encrypting function
-        var text = encrypting(inputEl, numEl);
+        var text = encrypting(inputEl.value, numEl.value);
 
         //Create a new encrypted
         var cipher = new Encrypted(id, text)
@@ -51,26 +51,27 @@ function addEncrypted (event){
 
 //Shift user's input word to encrypt it
 function encrypting (cipher, value){
-    const pointA = 'A'.codePointAt(0);
-    const pointZ = 'Z'.codePointAt(0);
+    const pointA = 65;
+    const pointZ = 90;
 
     var encryptMessage = '';
 
     //loops through each letter of the word
     for (var i = 0; i < cipher.length; i++ ){
-        let letter = cipher.codePointAt(0);
+        let letter = cipher.codePointAt(i);
 
         //Change the letter by checking it key code value then adding to it by user value
-        if (letter >= pointA && code <= pointZ){
+        if (letter >= pointA && letter <= pointZ){
             letter -= pointA;
             
-            letter = mod(letter + value, 26);
+            letter = mod(letter + Number(value), 26);
 
-            letter += pointA
+            letter += pointA;
         }
 
         //Combines the individual letters together to form the encrypted word
         encryptMessage += String.fromCodePoint(letter);
+        console.log(letter, i, value);
     }
 
     return encryptMessage;
