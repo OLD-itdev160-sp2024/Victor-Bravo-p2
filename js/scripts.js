@@ -57,8 +57,8 @@ function encrypting (cipher, value){
     var encryptMessage = '';
 
     //loops through each letter of the word
-    for (let chr of cipher){
-        let letter = chr.codePointAt(0);
+    for (var i = 0; i < cipher.length; i++ ){
+        let letter = cipher.codePointAt(0);
 
         //Change the letter by checking it key code value then adding to it by user value
         if (letter >= pointA && code <= pointZ){
